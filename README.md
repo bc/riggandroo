@@ -25,3 +25,6 @@ Last 4 digits on card 1725
 
 Amount $50.00
 
+
+https://denver.craigslist.org/apa/d/denver-three-stylish-townhomes/7669648135.html
+https://post.craigslist.org/manage/7669648135
