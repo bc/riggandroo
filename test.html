@@ -95,10 +95,19 @@
     }
     connectedCallback() {
     super.connectedCallback(); // Call the parent class's connectedCallback method
-    // Apply the black and white filter to the image
-    this.shadowRoot.querySelector('.card-image').style.filter = 'grayscale(100%)';
     // Set the hardcoded image for the logo
     this.shadowRoot.querySelector('.logo').src = 'images/view_photos.jpg';
+    // Create the leased overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'leased-overlay';
+    overlay.textContent = 'Leased';
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'leased-image-container';
+    const cardImage = this.shadowRoot.querySelector('.card-image');
+    // Replace card image with image container
+    cardImage.parentNode.replaceChild(imageContainer, cardImage);
+    imageContainer.appendChild(cardImage);
+    imageContainer.appendChild(overlay);
     }
     }
     customElements.define('custom-card', CardComponent);
@@ -108,24 +117,17 @@
   <body>
     <custom-card image-link="images/2142_kitchen.jpg" card-link="https://denver.craigslist.org/apa/d/denver-gorgeous-bed-bath-walk-to/7702076631.html" icon-image-link="images/craigslist_logo.jpg" street-text="2142 S Gilpin St" city-text="Denver, CO 80210">
     </custom-card>
-
     <leased-card
-  image-link="images/widephoto_3706_living.jpg"
-  card-link="https://listings.snaplyphoto.com/sites/yvzoopm/unbranded"
-  street-text="3706 Jackson St"
-  city-text="Denver, CO 80205">
-</leased-card>
-
-
-
-<leased-card
-  image-link="images/2142_kitchen.jpg"
-  card-link="https://www.google.com"
-  street-text="2142 S Gilpin St"
-  city-text="Denver, CO 80210">
-</leased-card>
-
-
-
+    image-link="images/widephoto_3706_living.jpg"
+    card-link="https://listings.snaplyphoto.com/sites/yvzoopm/unbranded"
+    street-text="3706 Jackson St"
+    city-text="Denver, CO 80205">
+    </leased-card>
+    <leased-card
+    image-link="images/2142_kitchen.jpg"
+    card-link="https://www.google.com"
+    street-text="2142 S Gilpin St"
+    city-text="Denver, CO 80210">
+    </leased-card>
   </body>
 </html>
