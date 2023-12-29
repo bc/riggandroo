@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zillow Card Example</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-<style>
-  .card {
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zillow Card Example</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+    /* Add your existing CSS styles here */
+    </style>
+    <script>
+    class CardComponent extends HTMLElement {
+    constructor() {
+    super();
+    const template = document.createElement('template');
+    template.innerHTML = `
+    <style>
+    .card {
     font-family: Arial, sans-serif;
     max-width: 300px;
     border: 1px solid #e1e1e1;
@@ -14,68 +23,109 @@
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s ease;
-  }
-
-  .card:hover {
+    }
+    .card:hover {
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-
-  .card-image {
+    }
+    .card-image {
     width: 100%;
     display: block;
     transition: transform 0.3s ease;
-  }
-
-  .card:hover .card-image {
+    }
+    .card:hover .card-image {
     transform: scale(1.1);
-  }
-
-  .card-content {
+    }
+    .card-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px;
     background-color: #fff;
-  }
-
-  .address {
+    }
+    .address {
     margin: 0;
     font-size: 16px;
     line-height: 1.5;
     color: #333;
-  }
-
-  .number {
+    }
+    .number {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 20px;
-  }
-
-  .city {
+    }
+    .city {
     font-weight: 300;
-  }
-
-  .logo {
+    }
+    .logo {
     width: 60px;
     height: auto;
     align-self: center;
-  }
-</style>
-</head>
-<body>
-<a href="#" target="_blank" style="text-decoration: none; color: inherit;">
-  <div class="card">
-    <img src="images/2142_kitchen.jpg" alt="Interior of a house" class="card-image">
-    <div class="card-content">
-      <div>
-        <p class="address">
-          <span class="number">2142 S Gilpin St</span><br>
-          <span class="city">Denver, CO 80210</span>
-        </p>
+    }
+    </style>
+    <a href="" class="card-link" target="_blank" style="text-decoration: none; color: inherit;">
+      <div class="card">
+        <img src="" alt="Card image" class="card-image">
+        <div class="card-content">
+          <div>
+            <p class="address">
+              <span class="number"></span><br>
+              <span class="city"></span>
+            </p>
+          </div>
+          <img src="" alt="Icon image" class="logo">
+        </div>
       </div>
-      <img src="images/craigslist_logo.jpg" class="logo">
-    </div>
-  </div>
-</a>
-</body>
+    </a>
+    `;
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
+    connectedCallback() {
+    this.shadowRoot.querySelector('.card-link').href = this.getAttribute('card-link');
+    this.shadowRoot.querySelector('.card-image').src = this.getAttribute('image-link');
+    this.shadowRoot.querySelector('.logo').src = this.getAttribute('icon-image-link');
+    this.shadowRoot.querySelector('.number').textContent = this.getAttribute('street-text');
+    this.shadowRoot.querySelector('.city').textContent = this.getAttribute('city-text');
+    }
+    }
+    class LeasedCardComponent extends CardComponent {
+    constructor() {
+    super();
+    // Additional setup specific to leased cards...
+    }
+    connectedCallback() {
+    super.connectedCallback(); // Call the parent class's connectedCallback method
+    // Apply the black and white filter to the image
+    this.shadowRoot.querySelector('.card-image').style.filter = 'grayscale(100%)';
+    // Set the hardcoded image for the logo
+    this.shadowRoot.querySelector('.logo').src = 'images/view_photos.jpg';
+    }
+    }
+    customElements.define('custom-card', CardComponent);
+    customElements.define('leased-card', LeasedCardComponent);
+    </script>
+  </head>
+  <body>
+    <custom-card image-link="images/2142_kitchen.jpg" card-link="https://denver.craigslist.org/apa/d/denver-gorgeous-bed-bath-walk-to/7702076631.html" icon-image-link="images/craigslist_logo.jpg" street-text="2142 S Gilpin St" city-text="Denver, CO 80210">
+    </custom-card>
+
+    <leased-card
+  image-link="images/widephoto_3706_living.jpg"
+  card-link="https://listings.snaplyphoto.com/sites/yvzoopm/unbranded"
+  street-text="3706 Jackson St"
+  city-text="Denver, CO 80205">
+</leased-card>
+
+
+
+<leased-card
+  image-link="images/2142_kitchen.jpg"
+  card-link="https://www.google.com"
+  street-text="2142 S Gilpin St"
+  city-text="Denver, CO 80210">
+</leased-card>
+
+
+
+  </body>
 </html>
