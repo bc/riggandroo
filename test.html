@@ -13,11 +13,21 @@
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
   }
 
   .card-image {
     width: 100%;
     display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover .card-image {
+    transform: scale(1.1);
   }
 
   .card-content {
@@ -43,28 +53,29 @@
 
   .city {
     font-weight: 300;
-    font-size: 13px;
   }
 
-.logo {
-    width: 45px; /* Smaller width for the logo */
-    height: auto; /* Maintain the aspect ratio of the logo */
+  .logo {
+    width: 60px;
+    height: auto;
     align-self: center;
   }
 </style>
 </head>
 <body>
-<div class="card">
-  <img src="images/2142_kitchen.jpg" alt="Interior of a house" class="card-image">
-  <div class="card-content">
-    <div>
-      <p class="address">
-        <span class="number">2142 S Gilpin St</span><br>
-        <span class="city">Denver, CO 80205</span>
-      </p>
+<a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+  <div class="card">
+    <img src="images/2142_kitchen.jpg" alt="Interior of a house" class="card-image">
+    <div class="card-content">
+      <div>
+        <p class="address">
+          <span class="number">2142 S Gilpin St</span><br>
+          <span class="city">Denver, CO 80210</span>
+        </p>
+      </div>
+      <img src="images/craigslist_logo.jpg" class="logo">
     </div>
-    <img src="images/craigslist_logo.jpg" width="50%" alt="Zillow logo" class="logo">
   </div>
-</div>
+</a>
 </body>
 </html>
