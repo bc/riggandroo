@@ -72,7 +72,7 @@
               <span class="city"></span>
             </p>
           </div>
-          <img src="" alt="Icon image" class="logo">
+          <p class="logo">View Photos</p>
         </div>
       </div>
     </a>
@@ -91,6 +91,32 @@
     class LeasedCardComponent extends CardComponent {
     constructor() {
     super();
+    const style = document.createElement('style');
+    style.textContent = `
+      .leased-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        color: black;
+        background: rgba(255, 255, 255, 0.5); /* semi-transparent white background */
+        text-align: center;
+        font-size: 24px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      .leased-image-container {
+        position: relative;
+      }
+
+      .card-image {
+        width: 100%;
+        display: block;
+        filter: grayscale(100%);
+      }
+    `;
+    this.shadowRoot.appendChild(style);
     // Additional setup specific to leased cards...
     }
     connectedCallback() {
@@ -100,7 +126,7 @@
     // Create the leased overlay
     const overlay = document.createElement('div');
     overlay.className = 'leased-overlay';
-    overlay.textContent = 'Leased';
+    overlay.textContent = 'Currently Under Lease';
     const imageContainer = document.createElement('div');
     imageContainer.className = 'leased-image-container';
     const cardImage = this.shadowRoot.querySelector('.card-image');
