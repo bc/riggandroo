@@ -28,8 +28,6 @@ This number is unique to the Secretary of State's office.
 
 Payment type VISA
 
-Last 4 digits on card 1725
-
 Amount $50.00
 
 
