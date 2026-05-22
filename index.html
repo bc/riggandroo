@@ -9,13 +9,54 @@
 		<title>Rigg&Roo Properties</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="https://kit.fontawesome.com/e1e2d876c8.js" crossorigin="anonymous"></script>
 		<style type="text/css">
+		* {
+			font-family: 'Fira Sans', sans-serif;
+		}
+
+		body {
+			font-family: 'Fira Sans', sans-serif;
+			font-weight: 400;
+		}
+
+		h1 {
+			font-weight: 700;
+			font-size: 2.5rem;
+		}
+
+		h2 {
+			font-weight: 600;
+			font-size: 2rem;
+		}
+
+		h3 {
+			font-weight: 600;
+			font-size: 1.5rem;
+		}
+
+		h4 {
+			font-weight: 500;
+			font-size: 1.25rem;
+		}
+
+		h5, h6 {
+			font-weight: 500;
+			font-size: 1rem;
+		}
+
+		strong {
+			font-weight: 600;
+		}
+
 		#header {
-		padding-top: 3em;
+			padding-top: 3em;
 		}
 		</style>
 	</head>
@@ -40,7 +81,7 @@
 						<ul>
 							<li><a href="/">Home</a></li>
 							<li><a href="/nearby.html">Neighborhood Guide</a></li>
-							<li><a href="sms:+17207729042?">Click to contact us via text</a></li>
+							<li><a href="https://milehigh.acorn-oak.com/contact">Contact Us</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -61,18 +102,196 @@
 				<div class="inner">
 					<header>
 						<span class="image main"><img src="images/widephoto_3706_living.jpg" alt=""></span>
-						<strong>Pet-friendly housing in Denver CO.</strong><br> Our remodeled townhomes in the Clayton neighborhood and University Park neighborhood of Denver have stainless steel appliances, Luxury Vinyl Plank (LVP) floors, and AC and heating systems. Your dogs will love the fenced private yard! <br>
+						<strong>Pet-friendly housing in Denver & Castle Rock, CO.</strong><br> Discover our beautiful remodeled homes across Denver and Castle Rock. We offer 6 pet-friendly properties featuring stainless steel appliances, new floors, and AC. Find your perfect home in Denver's Clayton and University Park neighborhoods on N Jackson St and S Gilpin St, or explore our Castle Rock options on 6th St. All homes include fenced private yards perfect for your pets! <br>
 						<a href="nearby.html"><br><i class="fa-solid fa-location-dot"></i> Click here to see what's nearby in our neighborhood.
 						</a>
 						<hr><strong>Click on the Zillow links to see more photos and submit an application.</strong> <br>
 					</header>
 					<section>
-						<div class="box alt">
-							<div class="row gtr-uniform">
-								<div class="col-4"><span class="image fit"><a href="https://denver.craigslist.org/apa/d/denver-gorgeous-bed-bath-walk-to/7702076631.html"><img src="images/2142_kitchen.jpg" alt="" /></a></span></div>
-								<div class="col-4"><span class="image fit"><a href="https://listings.snaplyphoto.com/sites/yvzoopm/unbranded"><img src="images/06_zillow.jpg" alt="" /></a></span></div>
-								<div class="col-4"><span class="image fit"><a href="https://listings.snaplyphoto.com/sites/yxobbzg/unbranded#&gid=1&pid=2"><img src="images/04_zillow.jpg" alt="" /></a></span></div>
-															</div>
+						<style>
+							.property-grid {
+								display: grid;
+								grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+								gap: 2rem;
+								margin: 2rem 0;
+							}
+							.property-card {
+								background: white;
+								border-radius: 8px;
+								overflow: hidden;
+								box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+								transition: transform 0.2s, box-shadow 0.2s;
+								text-decoration: none;
+								color: inherit;
+								display: flex;
+								flex-direction: column;
+								cursor: pointer;
+							}
+							.property-card:hover {
+								transform: translateY(-4px);
+								box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+							}
+							.property-image {
+								width: 100%;
+								height: 180px;
+								background-size: cover;
+								background-position: center;
+								display: block;
+								user-select: none;
+								pointer-events: none;
+								-webkit-user-drag: none;
+							}
+							.property-info {
+								padding: 0.8rem 1rem;
+								flex: 1;
+								display: flex;
+								flex-direction: column;
+								justify-content: space-between;
+								align-items: flex-start;
+							}
+							.property-address {
+								font-size: 0.85rem;
+								font-weight: 600;
+								color: #333;
+								margin: 0 0 0.25rem 0;
+								letter-spacing: 0.02em;
+								line-height: 1.3;
+								text-transform: capitalize;
+							}
+							.property-location {
+								font-size: 0.75rem;
+								color: #666;
+								margin-bottom: 0.5rem;
+								line-height: 1.2;
+							}
+							.zillow-button {
+								align-self: flex-end;
+								background: #0074E4;
+								color: white;
+								padding: 0.4rem 0.8rem;
+								border-radius: 4px;
+								text-decoration: none;
+								font-weight: 600;
+								font-size: 0.75rem;
+								display: inline-flex;
+								align-items: center;
+								gap: 0.3rem;
+								transition: background 0.2s;
+								margin-top: 0.3rem;
+							}
+							.zillow-button:hover {
+								background: #0056b3;
+								text-decoration: none;
+								color: white;
+							}
+							.property-card-link {
+								text-decoration: none;
+								color: inherit;
+								display: grid;
+							}
+						</style>
+						<div class="property-grid">
+							<!-- 3706 N Jackson St -->
+							<a href="https://www.zillow.com/homedetails/3706-N-Jackson-St-Denver-CO-80205/13302602_zpid/?view=public" class="property-card-link">
+								<div class="property-card">
+									<div class="property-image" style="background-image: url('images/06_zillow.jpg');"></div>
+									<div class="property-info">
+										<div>
+											<h3 class="property-address">3706 N Jackson St</h3>
+											<p class="property-location">Denver, CO 80205</p>
+										</div>
+										<span class="zillow-button">
+											<img src="images/zillow_logo.jpg" alt="Zillow" style="height: 20px; width: auto; pointer-events: none;" />
+											View
+										</span>
+									</div>
+								</div>
+							</a>
+
+							<!-- 3704 N Jackson St -->
+							<a href="https://www.zillow.com/homedetails/3704-N-Jackson-St-Denver-CO-80205/13302603_zpid/?view=public" class="property-card-link">
+								<div class="property-card">
+									<div class="property-image" style="background-image: url('images/04_zillow.jpg');"></div>
+									<div class="property-info">
+										<div>
+											<h3 class="property-address">3704 N Jackson St</h3>
+											<p class="property-location">Denver, CO 80205</p>
+										</div>
+										<span class="zillow-button">
+											<img src="images/zillow_logo.jpg" alt="Zillow" style="height: 20px; width: auto; pointer-events: none;" />
+											View
+										</span>
+									</div>
+								</div>
+							</a>
+
+							<!-- 3702 N Jackson St -->
+							<a href="https://www.zillow.com/homedetails/3702-N-Jackson-St-Denver-CO-80205/13302604_zpid/?view=public" class="property-card-link">
+								<div class="property-card">
+									<div class="property-image" style="background-image: url('images/02_zillow.jpg');"></div>
+									<div class="property-info">
+										<div>
+											<h3 class="property-address">3702 N Jackson St</h3>
+											<p class="property-location">Denver, CO 80205</p>
+										</div>
+										<span class="zillow-button">
+											<img src="images/zillow_logo.jpg" alt="Zillow" style="height: 20px; width: auto; pointer-events: none;" />
+											View
+										</span>
+									</div>
+								</div>
+							</a>
+
+							<!-- 656 6th St, Castle Rock -->
+							<a href="https://www.zillow.com/homedetails/656-6th-St-Castle-Rock-CO-80104/61085504_zpid/?view=public" class="property-card-link">
+								<div class="property-card">
+									<div class="property-image" style="background-image: url('images/656_kitchen.webp');"></div>
+									<div class="property-info">
+										<div>
+											<h3 class="property-address">656 6th St</h3>
+											<p class="property-location">Castle Rock, CO 80104</p>
+										</div>
+										<span class="zillow-button">
+											<img src="images/zillow_logo.jpg" alt="Zillow" style="height: 20px; width: auto; pointer-events: none;" />
+											View
+										</span>
+									</div>
+								</div>
+							</a>
+
+							<!-- 662 6th St, Castle Rock -->
+							<a href="https://www.zillow.com/homedetails/662-6th-St-Castle-Rock-CO-80104/147430445_zpid/?view=public" class="property-card-link">
+								<div class="property-card">
+									<div class="property-image" style="background-image: url('images/662_window.jpeg');"></div>
+									<div class="property-info">
+										<div>
+											<h3 class="property-address">662 6th St</h3>
+											<p class="property-location">Castle Rock, CO 80104</p>
+										</div>
+										<span class="zillow-button">
+											<img src="images/zillow_logo.jpg" alt="Zillow" style="height: 20px; width: auto; pointer-events: none;" />
+											View
+										</span>
+									</div>
+								</div>
+							</a>
+
+							<!-- 2142 S Gilpin St -->
+							<a href="https://www.zillow.com/homedetails/2142-S-Gilpin-St-Denver-CO-80210/13376025_zpid/?view=public" class="property-card-link">
+								<div class="property-card">
+									<div class="property-image" style="background-image: url('images/2142_kitchen.jpg');"></div>
+									<div class="property-info">
+										<div>
+											<h3 class="property-address">2142 S Gilpin St</h3>
+											<p class="property-location">Denver, CO 80210</p>
+										</div>
+										<span class="zillow-button">
+											<img src="images/zillow_logo.jpg" alt="Zillow" style="height: 20px; width: auto; pointer-events: none;" />
+											View
+										</span>
+									</div>
+								</div>
+							</a>
 						</div>
 					</section>
 <!-- 					<table style="width:100%;">
